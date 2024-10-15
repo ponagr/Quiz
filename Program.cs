@@ -15,9 +15,11 @@
             {
                 case 1:
                     //Metod för att lägga till fråga
+                    QuizHandler.AddQuestionMenu();
                     break;
                 case 2:
                     //Metod för att köra quiz
+                    QuizHandler.RunQuiz();
                     break;
                 case 0:
                     //Avsluta programmet
