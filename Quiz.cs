@@ -31,10 +31,6 @@ public class Fritext : Quiz
         Console.Write("Skriv in ditt svar: ");
         string svar = Console.ReadLine();
         char.ToUpper(svar[0]);
-        for (int i = 0; i < Answer.Count; i++)
-        {
-
-        }
         if (svar == Answer[0])
         {
             Console.WriteLine($"Rätt!");
@@ -164,7 +160,23 @@ public class Årtal : Quiz
 
     public override int PrintQuestion()
     {
-        return 0;
+        int points = 0;
+        Console.WriteLine(Question);
+        Console.Write("Skriv in ditt svar: ");
+        string svar = Console.ReadLine();
+        char.ToUpper(svar[0]);
+        if (svar == Answer[0])
+        {
+            Console.WriteLine($"Rätt!");
+            points = Points;
+        }
+        else
+        {
+            Console.WriteLine("Fel svar!");
+            Console.WriteLine($"Rätt svar var {Answer[0]}");
+        }
+
+        return points;
     }
 
     public static void AddQuestion()
@@ -173,10 +185,8 @@ public class Årtal : Quiz
 
         Console.WriteLine("Skriv in en fråga:");
         string question = Console.ReadLine();
-        char.ToUpper(question[0]);
         Console.WriteLine("Skriv in det rätta årtalet:");
         string answerInput = Console.ReadLine();
-        char.ToUpper(answerInput[0]);
         answer.Add(answerInput);
         Console.WriteLine("Hur många poäng är frågan värd?");
         int points = int.Parse(Console.ReadLine());
@@ -198,7 +208,22 @@ public class EttTillTio : Quiz
 
     public override int PrintQuestion()
     {
-        return 0;
+        int points = 0;
+        Console.WriteLine(Question);
+        Console.Write("Skriv in ditt svar: ");
+        string svar = Console.ReadLine();
+        if (svar == Answer[0])
+        {
+            Console.WriteLine($"Rätt!");
+            points = Points;
+        }
+        else
+        {
+            Console.WriteLine("Fel svar!");
+            Console.WriteLine($"Rätt svar var {Answer[0]}");
+        }
+
+        return points;
     }
 
     public static void AddQuestion()

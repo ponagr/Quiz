@@ -1,5 +1,7 @@
 ﻿class Program
 {
+    //TODO: Fixa EttKryssTvå.PrintQuestion(), Fixa json-metoder för att spara ner och hämta info för QuizHandler.quizzes
+
     static void Main(string[] args)
     {
         bool runMenu = true;
