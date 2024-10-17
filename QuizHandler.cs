@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 public static class QuizHandler
 {
     public static List <Quiz> quizzes = new List<Quiz>();
@@ -5,8 +7,8 @@ public static class QuizHandler
 
     public static void AddQuestionMenu()
     {
+        Console.Clear();
         Console.WriteLine("Lägg till en fråga:");
-        Console.WriteLine();
         Console.WriteLine("1. Fritext");
         Console.WriteLine("2. 1,X,2");
         Console.WriteLine("3. Flersvarsalternativ");
@@ -79,5 +81,19 @@ public static class QuizHandler
             }
         }
         Console.WriteLine($"Du fick {playerPoints}/{maxPoints} poäng");
+        Console.ReadKey();
+    }
+
+    public static void SaveJson()
+    {
+        string fileName = "quizzes.json";
+        string jsonString = JsonSerializer.Serialize(quizzes);
+        File.WriteAllText(fileName, jsonString);
+    }
+    public static void LoadJson()
+    {
+        string fileName = "quizzes.json";
+        string jsonString = File.ReadAllText(fileName);
+        quizzes = JsonSerializer.Deserialize<List<Quiz>>(jsonString);
     }
 }

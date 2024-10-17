@@ -12,6 +12,10 @@ public class Quiz
     {
         return 0;
     }
+    public static string FirstCharUpper(string value)
+    {
+        return char.ToUpper(value[0]) + value.Substring(1).ToLower();
+    }
 
 }
 
@@ -30,7 +34,8 @@ public class Fritext : Quiz
         Console.WriteLine(Question);
         Console.Write("Skriv in ditt svar: ");
         string svar = Console.ReadLine();
-        char.ToUpper(svar[0]);
+        FirstCharUpper(svar);
+        //char.ToUpper(svar[0]);
         if (svar == Answer[0])
         {
             Console.WriteLine($"Rätt!");
@@ -51,10 +56,12 @@ public class Fritext : Quiz
         
         Console.WriteLine("Skriv in en fråga:");
         string question = Console.ReadLine();
-        char.ToUpper(question[0]);
+        FirstCharUpper(question);
+        //char.ToUpper(question[0]);
         Console.WriteLine("Skriv in ett svar:");
         string answerInput = Console.ReadLine();
-        char.ToUpper(answerInput[0]);
+        //char.ToUpper(answerInput[0]);
+        FirstCharUpper(answerInput);
         answer.Add(answerInput);
         Console.WriteLine("Hur många poäng är frågan värd?");
         int points = int.Parse(Console.ReadLine());
@@ -89,7 +96,7 @@ public class FlersvarsAlternativ : Quiz
         {
             Console.Write($"Skriv in svar nr {i+1}: ");
             string svar = Console.ReadLine();
-            char.ToUpper(svar[0]);
+            FirstCharUpper(svar);
             answers.Add(svar);
         }  
         for (int i = 0; i < Answer.Count; i++)
@@ -100,12 +107,12 @@ public class FlersvarsAlternativ : Quiz
                 {
                     Console.WriteLine($"{answers[i]} var rätt!");
                     rightAnswers++;
-                    points = Points;
+                    points += Points;
                 }
-                else
-                {
-                    Console.WriteLine($"{answers[i]} var fel svar");
-                }
+                // else
+                // {
+                //     Console.WriteLine($"{answers[i]} var fel svar");
+                // }
             }
         }
         Console.WriteLine($"Du fick {rightAnswers}/{Answer.Count} rätt");
@@ -120,7 +127,8 @@ public class FlersvarsAlternativ : Quiz
 
         Console.WriteLine("Skriv in en fråga:");
         string question = Console.ReadLine();
-        char.ToUpper(question[0]);
+        FirstCharUpper(question);
+        //char.ToUpper(question[0]);
 
         Console.WriteLine("Hur många svarsalternativ vill du lägga till?");
         int ammount = int.Parse(Console.ReadLine());
@@ -128,7 +136,8 @@ public class FlersvarsAlternativ : Quiz
         {
             Console.Write($"Skriv in Alternativ {i+1}: ");
             string answer = Console.ReadLine();
-            char.ToUpper(answer[0]);
+            FirstCharUpper(answer);
+            //char.ToUpper(answer[0]);
             alternatives.Add(answer);
         }
         Console.WriteLine("Hur många rätta svar ska frågan ha?");
@@ -137,7 +146,8 @@ public class FlersvarsAlternativ : Quiz
         {           
             Console.Write($"Skriv in rätt svar {i+1}: ");
             string answer = Console.ReadLine();
-            char.ToUpper(answer[0]);
+            FirstCharUpper(answer);
+            //char.ToUpper(answer[0]);
             answers.Add(answer);
         }
         Console.WriteLine("Hur många poäng är varje rätt svar värt?");
@@ -164,7 +174,8 @@ public class Årtal : Quiz
         Console.WriteLine(Question);
         Console.Write("Skriv in ditt svar: ");
         string svar = Console.ReadLine();
-        char.ToUpper(svar[0]);
+        FirstCharUpper(svar);
+        //char.ToUpper(svar[0]);
         if (svar == Answer[0])
         {
             Console.WriteLine($"Rätt!");
@@ -185,6 +196,7 @@ public class Årtal : Quiz
 
         Console.WriteLine("Skriv in en fråga:");
         string question = Console.ReadLine();
+        FirstCharUpper(question);
         Console.WriteLine("Skriv in det rätta årtalet:");
         string answerInput = Console.ReadLine();
         answer.Add(answerInput);
@@ -232,7 +244,8 @@ public class EttTillTio : Quiz
 
         Console.WriteLine("Skriv in en fråga:");
         string question = Console.ReadLine();
-        char.ToUpper(question[0]);
+        FirstCharUpper(question);
+        //char.ToUpper(question[0]);
         string answerInput;
         while (true)
         {
@@ -271,7 +284,26 @@ public class EttKryssTvå : Quiz
 
     public override int PrintQuestion()
     {
-        return 0;
+        int points = 0;
+        Console.WriteLine(Question);
+        Console.WriteLine();
+        Console.WriteLine($"1. {Alternatives[0]}");
+        Console.WriteLine($"X. {Alternatives[1]}");
+        Console.WriteLine($"2. {Alternatives[2]}");
+        Console.Write("Skriv in ditt svar (1/X/2): ");
+        string answer = Console.ReadLine();
+        if (answer == Answer[0])
+        {
+            Console.WriteLine($"Rätt!");
+            points = Points;
+        }
+        else
+        {
+            Console.WriteLine("Fel svar!");
+            Console.WriteLine($"Rätt svar var {Answer[0]}");
+        }
+        
+        return points;
     }
 
     public static void AddQuestion()
@@ -281,13 +313,17 @@ public class EttKryssTvå : Quiz
 
         Console.WriteLine("Skriv in en fråga:");
         string question = Console.ReadLine();
-        char.ToUpper(question[0]);
+        FirstCharUpper(question);
+        //char.ToUpper(question[0]);
         Console.Write("Skriv in Alternativ 1: ");
         string alt1 = Console.ReadLine();
+        FirstCharUpper(alt1);
         Console.Write("Skriv in Alternativ X: ");
         string altX = Console.ReadLine();
+        FirstCharUpper(altX);
         Console.Write("Skriv in Alternativ 2: ");
         string alt2 = Console.ReadLine();
+        FirstCharUpper(alt2);
         alternatives.Add(alt1);
         alternatives.Add(altX);
         alternatives.Add(alt2);
@@ -295,7 +331,8 @@ public class EttKryssTvå : Quiz
         string answerInput = Console.ReadLine();
         if (answerInput == "x")
         {
-            char.ToUpper(answerInput[0]);
+            FirstCharUpper(answerInput);
+            //char.ToUpper(answerInput[0]);
         }
         answer.Add(answerInput);
         Console.WriteLine("Hur många poäng är frågan värd?");
